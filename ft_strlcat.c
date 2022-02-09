@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiha <jiha@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:23:12 by jiha              #+#    #+#             */
-/*   Updated: 2022/01/12 13:50:50 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/09 20:16:08 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 size_t	ft_strlcat(char	*dst, const char *src, size_t dstsize)
 {
 	size_t	dl;
@@ -24,7 +25,7 @@ size_t	ft_strlcat(char	*dst, const char *src, size_t dstsize)
 		dl++;
 	while (src[sl] != '\0')
 		sl++;
-	if (dstsize < dst)
+	if (dstsize < ft_strlen(dst))
 	{
 		while (dl + i < dstsize - 1 && i < sl)
 		{

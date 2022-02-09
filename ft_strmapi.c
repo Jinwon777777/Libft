@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:26:38 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/08 20:42:27 by jiha             ###   ########.fr       */
+/*   Created: 2022/02/06 15:06:48 by jiha              #+#    #+#             */
+/*   Updated: 2022/02/10 08:47:20 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
+	int		len;
 	char	*arr;
-	size_t	chk;
 
-	if (s == NULL)
+	if (!(s) || !(f))
 		return (NULL);
-	if ((unsigned int)ft_strlen(s) <= start)
-		return (NULL);
-	chk = ft_strlen(s + start);
-	if (len > chk)
-		len = chk;
+	len = ft_strlen(s);
 	arr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!(arr))
 		return (NULL);
-	ft_strlcpy(arr, s + start, len + 1);
+	arr[len] = '\0';
+	while (len-- >= 0)
+		arr[len] = f(len, s[len]);
 	return (arr);
 }

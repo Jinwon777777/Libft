@@ -1,32 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:26:38 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/08 20:42:27 by jiha             ###   ########.fr       */
+/*   Created: 2022/02/06 13:16:27 by jiha              #+#    #+#             */
+/*   Updated: 2022/02/06 15:06:11 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static int	ft_len(int n)
 {
-	char	*arr;
-	size_t	chk;
+	int	i;
 
-	if (s == NULL)
-		return (NULL);
-	if ((unsigned int)ft_strlen(s) <= start)
-		return (NULL);
-	chk = ft_strlen(s + start);
-	if (len > chk)
-		len = chk;
+	i = 0;
+	if (n < 0)
+		i++;
+	while (i != 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	int		len;
+	char	*arr;
+	long	tmp;
+
+	len = ft_len(n);
 	arr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!(arr))
 		return (NULL);
-	ft_strlcpy(arr, s + start, len + 1);
+	if (n < 0)
+	{
+		arr[0] = '-';
+		tmp = (long)(-1 * n);
+	}
+	else
+		tmp = (long)n;
+	arr[len--] = '\0';
+	while (tmp != 0)
+	{
+		arr[len] = (tmp % 10);
+		tmp = (tmp / 10);
+		len--;
+	}
 	return (arr);
 }

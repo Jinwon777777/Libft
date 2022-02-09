@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:26:38 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/08 20:42:27 by jiha             ###   ########.fr       */
+/*   Created: 2022/02/09 20:17:07 by jiha              #+#    #+#             */
+/*   Updated: 2022/02/09 20:32:22 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*arr;
-	size_t	chk;
+	size_t	i;
 
-	if (s == NULL)
-		return (NULL);
-	if ((unsigned int)ft_strlen(s) <= start)
-		return (NULL);
-	chk = ft_strlen(s + start);
-	if (len > chk)
-		len = chk;
-	arr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!(arr))
-		return (NULL);
-	ft_strlcpy(arr, s + start, len + 1);
-	return (arr);
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] != s2[i] || s1[i] == '\0' || s2[i] == '\0')
+			break ;
+		i++;
+	}
+	return (s1[i] - s2[i]);
 }

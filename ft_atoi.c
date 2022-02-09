@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiha <jiha@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 13:54:34 by jiha              #+#    #+#             */
-/*   Updated: 2022/01/12 16:13:28 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/09 10:20:01 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_space(char c)
+static int	ft_is_space(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\r')
 		return (1);

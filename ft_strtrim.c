@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:26:38 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/08 20:42:27 by jiha             ###   ########.fr       */
+/*   Created: 2022/02/03 15:59:58 by jiha              #+#    #+#             */
+/*   Updated: 2022/02/04 14:11:22 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*arr;
-	size_t	chk;
+	size_t	start;
+	size_t	end;
+	size_t	i;
+	char	*ans;
 
-	if (s == NULL)
+	if (!(s1) || !(set))
 		return (NULL);
-	if ((unsigned int)ft_strlen(s) <= start)
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	end = ft_strlen(s1) - 1;
+	while (end > start && ft_strchr(set, s1[end]))
+		end--;
+	ans = (char *)malloc(sizeof(char) * (end - start + 2));
+	if (!(ans))
 		return (NULL);
-	chk = ft_strlen(s + start);
-	if (len > chk)
-		len = chk;
-	arr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!(arr))
-		return (NULL);
-	ft_strlcpy(arr, s + start, len + 1);
-	return (arr);
+	i = 0;
+	while (start <= end)
+		ans[i++] = s1[start++];
+	ans[i] = '\0';
+	return (ans);
 }

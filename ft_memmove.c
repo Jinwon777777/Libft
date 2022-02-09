@@ -3,39 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiha <jiha@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:11:59 by jiha              #+#    #+#             */
-/*   Updated: 2022/01/12 11:39:05 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 08:40:25 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memmove(void *dest, const void *src, size_t num)
+void	*memmove(void *dst, const void *src, size_t num)
 {
-	char		*dst;
-	const char	*src;
+	char		*tmp_dst;
+	const char	*tmp_src;
 	size_t		i;
 
+	if (!(dst) && !(src))
+		return (NULL);
 	i = 0;
-	dst = (char *) dest;
-	src = (const char *) src;
+	tmp_dst = (char *) dst;
+	tmp_src = (const char *) src;
 	if (dst < src)
 	{
 		while (i < num)
 		{
-			dst[i] = src[i];
+			tmp_dst[i] = tmp_src[i];
 			i++;
 		}
 	}
 	else
 	{
-		while (num > 0)
-		{
-			dst[num - 1] = src[num - 1];
-			num--;
-		}
+		while (num-- > 0)
+			tmp_dst[num - 1] = tmp_src[num - 1];
 	}
-	return (dest);
+	return (dst);
 }
