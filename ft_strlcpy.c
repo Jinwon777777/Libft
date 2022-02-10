@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:42:45 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/08 20:45:53 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 09:37:32 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,18 @@ size_t	ft_strlcpy(char	*dst, const char *src, size_t dstsize)
 	size_t	i;
 	size_t	j;
 
+	if (!(dst) || !(src))
+		return (NULL);
 	i = 0;
 	j = 0;
-	while (src[j] != '\0')
-		j++;
-	if (j >= dstsize)
+	j = ft_strlen(src);
+	if (dstsize == 0)
+		return (j);
+	while (i < (dstsize - 1) && src[i] != '\0')
 	{
-		while (i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		dst[i] = src[i];
+		i++;
 	}
-	else
-	{
-		while (i <= j)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-	}
+	dst[i] = '\0';
 	return (j);
 }
