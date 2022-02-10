@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:37:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 15:30:29 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 15:35:51 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ static int	ft_wordlength(char const *s, char c)
 
 	l = 0;
 	while (*s != '\0' && *s != c)
+	{
+		s++;
 		l++;
+	}
 	return (l);
 }
 
@@ -92,7 +95,8 @@ char	**ft_split(char const *s, char c)
 		while (*s == c && *s != '\0')
 			s++;
 		wordl = ft_wordlength(s, c);
-		if (!(arr[wordn] = ft_word_cpy(s, wordl)))
+		arr[wordn] = ft_word_cpy(s, wordl);
+		if (!(arr[wordn]))
 		{
 			ft_free_error(arr);
 			return (NULL);
