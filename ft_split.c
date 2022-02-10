@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:37:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 11:14:17 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 14:05:22 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	a = 0;
 	x = 0;
-	while (a < cnt)
+	while (s[x] && a < cnt)
 	{
 		x = ft_pass(s, x, c);
 		arr[a] = ft_word_cpy(s, c, &x);
