@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 13:54:34 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 20:26:12 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 21:24:50 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	ft_atoi(const char *str)
 	while (ft_isdigit(str[i]))
 	{
 		val = (10 * val) + (str[i] - '0');
+		if ((val > 2147483648) && (pos_neg == -1))
+			return (0);
+		if ((val > 2147483647) && (pos_neg == 1))
+			return (-1);
 		i++;
 	}
-	if ((val > 2147483648) && (pos_neg == -1))
-		return (0);
-	if ((val > 2147483647) && (pos_neg == 1))
-		return (-1);
 	return ((int)val * pos_neg);
 }
