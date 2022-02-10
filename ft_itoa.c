@@ -6,13 +6,13 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 13:16:27 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 17:06:13 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 17:17:17 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_len(long long n)
+static int	ft_len(int n)
 {
 	int	i;
 
@@ -34,14 +34,14 @@ char	*ft_itoa(int n)
 	int		s;	
 
 	if (n == -2147483648)
-	{
-		arr = ft_strdup("-2147483648");
-		return (arr);
-	}
+		return (ft_strdup("-2147483648"));
+	len = ft_len(n);
 	s = 1;
 	if (n < 0)
-		s = -1;
-	len = ft_len(n);
+	{
+		s *= -1;
+		n *= -1;
+	}
 	arr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!(arr))
 		return (NULL);
