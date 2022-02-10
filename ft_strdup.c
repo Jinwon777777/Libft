@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiha <jiha@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 16:49:47 by jiha              #+#    #+#             */
-/*   Updated: 2022/01/12 17:11:59 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 10:42:27 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strdup(const char *s1)
@@ -18,6 +19,8 @@ char	*ft_strdup(const char *s1)
 
 	i = ft_strlen(s1);
 	tmp = (char *)malloc(sizeof(char));
+	if (!(tmp))
+		return (NULL);
 	ft_strlcpy(tmp, s1, i + 1);
 	return (tmp);
 }

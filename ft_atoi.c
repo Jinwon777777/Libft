@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 13:54:34 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 10:27:58 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 10:41:46 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int	ft_atoi(char *str)
 		val = 10 * val + (str[i] - '0');
 		i++;
 	}
-	val = (pos_neg * val);
-	return (val);
+	if (val > 2147483647 && pos_neg == 1)
+		return (-1);
+	if (val < 2147483648 && pos_neg == -1)
+		return (0);
+	return (pos_neg * val);
 }

@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:37:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 08:41:51 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 10:48:38 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**ft_split(char const *s, char c)
 	if (!(s))
 		return (NULL);
 	cnt = ft_get_cnt(s, c);
-	arr = (char **)malloc(sizeof(char *) * cnt);
+	arr = (char **)malloc(sizeof(char *) * (cnt + 1));
 	if (!(arr))
 		return (NULL);
 	a = 0;
