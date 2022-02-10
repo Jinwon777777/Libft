@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:37:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 15:35:51 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 16:07:00 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,6 @@ static int	ft_get_cnt(char const *s, char c)
 	return (cnt);
 }
 
-static int	ft_wordlength(char const *s, char c)
-{
-	int	l;
-
-	l = 0;
-	while (*s != '\0' && *s != c)
-	{
-		s++;
-		l++;
-	}
-	return (l);
-}
-
 static char	*ft_word_cpy(char const *s, int wordl)
 {
 	char	*w;
@@ -76,6 +63,32 @@ static char	*ft_word_cpy(char const *s, int wordl)
 	return (w);
 }
 
+static void	ft_word_split(char **arr, char const *s, char c)
+{
+	int	i;
+	int	l;
+
+	i = 0;
+	while (*s)
+	{
+		while (*s != '\0' && *s == c)
+			s++;
+		l = 0;
+		while (*s != c && *s != '\0')
+		{
+			l++;
+			s++;
+		}
+		arr[i] = ft_word_cpy(s - l, l);
+		if (!arr[i])
+		{
+			ft_free_error(arr);
+			return ;
+		}
+		i++;
+	}
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
@@ -89,20 +102,7 @@ char	**ft_split(char const *s, char c)
 	arr = (char **)malloc(sizeof(char *) * (cnt + 1));
 	if (!(arr))
 		return (NULL);
-	wordn = -1;
-	while (++wordn < cnt)
-	{
-		while (*s == c && *s != '\0')
-			s++;
-		wordl = ft_wordlength(s, c);
-		arr[wordn] = ft_word_cpy(s, wordl);
-		if (!(arr[wordn]))
-		{
-			ft_free_error(arr);
-			return (NULL);
-		}
-		s += wordl;
-	}
 	arr[cnt] = NULL;
+	ft_word_split(arr, s, c);
 	return (arr);
 }
