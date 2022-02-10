@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:59:58 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 21:21:27 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 22:12:06 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*ans;
 
 	if (!(s1))
-		return (NULL);
+		return (ft_strdup(""));
 	if (!(set))
 		return (ft_strdup(s1));
 	start = 0;
