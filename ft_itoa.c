@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 13:16:27 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 16:55:38 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 17:06:13 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_len(long long n)
 	int	i;
 
 	i = 0;
-	if (n < 0)
+	if (n <= 0)
 		i++;
 	while (n != 0)
 	{
@@ -29,26 +29,29 @@ static int	ft_len(long long n)
 
 char	*ft_itoa(int n)
 {
-	int			len;
-	char		*arr;
-	long long	tmp;
+	int		len;
+	char	*arr;
+	int		s;	
 
-	tmp = n;
-	len = ft_len(tmp);
+	if (n == -2147483648)
+	{
+		arr = ft_strdup("-2147483648");
+		return (arr);
+	}
+	s = 1;
+	if (n < 0)
+		s = -1;
+	len = ft_len(n);
 	arr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!(arr))
 		return (NULL);
-	if (tmp < 0)
-	{
-		arr[0] = '-';
-		tmp = (-1 * tmp);
-	}
 	arr[len--] = '\0';
-	while (len != 0)
+	while (len >= 0)
 	{
-		arr[len] = (tmp % 10) + '0';
-		tmp = (tmp / 10);
-		len--;
+		arr[len--] = (n % 10) + '0';
+		n = (n / 10);
 	}
+	if (s == -1)
+		arr[0] = '-';
 	return (arr);
 }
