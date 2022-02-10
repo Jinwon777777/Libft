@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:37:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 10:48:38 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 11:14:17 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,10 @@ char	**ft_split(char const *s, char c)
 	while (a < cnt)
 	{
 		x = ft_pass(s, x, c);
-		arr[a++] = ft_word_cpy(s, c, &x);
+		arr[a] = ft_word_cpy(s, c, &x);
 		if (!(arr[a]))
 			return (ft_free_error(arr));
+		a++;
 	}
 	arr[a] = "\0";
 	return (arr);
