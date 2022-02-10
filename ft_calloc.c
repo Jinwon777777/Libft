@@ -6,13 +6,13 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 16:14:23 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/08 20:41:39 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 09:50:49 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
 	void	*tmp;
 
