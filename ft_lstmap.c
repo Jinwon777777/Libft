@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:01 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 17:45:14 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 22:25:02 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*tmp;
 	t_list	*ans;
 
-	if (!(lst) || !(f) || !(del))
+	if (!(lst) || !(f))
 		return (NULL);
 	ans = NULL;
 	while (lst)
