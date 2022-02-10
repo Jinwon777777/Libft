@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 20:17:07 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 20:03:36 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 20:39:39 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	while (i < (n - 1) && tmp1[i] != '\0' && tmp1[i] == tmp2[i])
 		i++;
-	return (s1[i] - s2[i]);
+	return (tmp1[i] - tmp2[i]);
 }
