@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:37:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 16:07:00 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 16:29:54 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,17 @@ static int	ft_get_cnt(char const *s, char c)
 
 	i = 0;
 	cnt = 0;
-	while (s[i] && s[i] == c)
-		i++;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] != c)
 		{
 			cnt++;
-			while (s[i] && s[i] == c)
+			while (s[i] && s[i] != c)
 				i++;
 		}
 		else
 			i++;
 	}
-	if (s[i - 1] != c)
-		cnt++;
 	return (cnt);
 }
 
@@ -63,15 +59,15 @@ static char	*ft_word_cpy(char const *s, int wordl)
 	return (w);
 }
 
-static void	ft_word_split(char **arr, char const *s, char c)
+static void	ft_word_split(char **arr, char const *s, char c, int cnt)
 {
 	int	i;
 	int	l;
 
 	i = 0;
-	while (*s)
+	while (*s && i < cnt)
 	{
-		while (*s != '\0' && *s == c)
+		while (*s && *s == c)
 			s++;
 		l = 0;
 		while (*s != c && *s != '\0')
@@ -93,8 +89,6 @@ char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		cnt;
-	int		wordn;
-	int		wordl;
 
 	if (!(s))
 		return (NULL);
@@ -103,6 +97,7 @@ char	**ft_split(char const *s, char c)
 	if (!(arr))
 		return (NULL);
 	arr[cnt] = NULL;
-	ft_word_split(arr, s, c);
+	ft_word_split(arr, s, c, cnt);
 	return (arr);
 }
+
