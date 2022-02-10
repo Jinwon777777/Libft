@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:37:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 14:05:22 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 14:19:55 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,25 @@ static int	ft_get_cnt(char const *s, char c)
 	return (cnt);
 }
 
-static char	*ft_word_cpy(char const *s, char c, int *x)
+static char	*ft_word_cpy(char *word, char const *s, char c, int *x)
 {
 	size_t	len;
-	char	*arri;
+	size_t	i;
 
-	len = *x;
-	while (s[len] && s[len] != c)
+	len = 0;
+	while (s[*x + len] && s[*x + len] != c)
 		len++;
-	arri = (char *)malloc(sizeof(char) * (len - *x + 1));
-	if (!(arri))
-		return (NULL);
-	ft_strlcpy(arri, &s[*x], (len - *x + 1));
-	*x = len;
-	return (arri);
+	word = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(word))
+		return (0);
+	i = 0;
+	while (i < len)
+	{
+		word[i] = s[*x + i];
+		i++;
+	}
+	*x += len;
+	return(word);
 }
 
 char	**ft_split(char const *s, char c)
@@ -84,10 +89,10 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	a = 0;
 	x = 0;
-	while (s[x] && a < cnt)
+	while (s[x] && (a < cnt))
 	{
 		x = ft_pass(s, x, c);
-		arr[a] = ft_word_cpy(s, c, &x);
+		ft_word_cpy(arr[a], s, c, &x);
 		if (!(arr[a]))
 			return (ft_free_error(arr));
 		a++;
