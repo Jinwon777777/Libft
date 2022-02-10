@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 20:17:07 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 09:47:25 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 09:55:29 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 			break ;
 		i++;
 	}
+	if (i == n)
+		return (tmp1[i - 1] - tmp2[i - 1]);
 	return (tmp1[i] - tmp2[i]);
 }
