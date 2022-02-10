@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:01:47 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 09:50:41 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 20:30:04 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_isalpha(int c);
 int		ft_isascii(int i);
 int		ft_isdigit(int i);
 int		ft_isprint(int i);
-int		ft_atoi(char *str);
+int		ft_atoi(const char *str);
 int		ft_strlen(const char *c);
 void	*ft_memset(void *ptr, int value, size_t num);
 void	ft_bzero(void *s, size_t n);
@@ -44,7 +44,6 @@ char	*ft_strrchr(const char *s, int c);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-int		ft_atoi(char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 
