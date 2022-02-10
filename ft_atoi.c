@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 13:54:34 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 10:59:53 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 20:26:12 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ static int	ft_is_space(char c)
 	return (0);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int			i;
-	long long	pos_neg;
+	int			pos_neg;
 	long long	val;
 
 	i = 0;
 	pos_neg = 1;
 	val = 0;
-	while (ft_is_space(str[i]))
+	while (ft_is_space(str[i]) && str[i])
 		i++;
 	while (str[i] == '-' || str[i] == '+')
 	{
@@ -38,14 +38,14 @@ int	ft_atoi(char *str)
 			pos_neg *= (-1);
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (ft_isdigit(str[i]))
 	{
-		val = 10 * val + (str[i] - '0');
-		if (val > 2147483647 && pos_neg == 1)
-			return (-1);
-		if (val > 2147483648 && pos_neg == -1)
-			return (0);
+		val = (10 * val) + (str[i] - '0');
 		i++;
 	}
-	return (pos_neg * val);
+	if ((val > 2147483648) && (pos_neg == -1))
+		return (0);
+	if ((val > 2147483647) && (pos_neg == 1))
+		return (-1);
+	return ((int)val * pos_neg);
 }

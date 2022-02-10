@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 15:24:30 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/06 15:38:44 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 18:06:02 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	int	i;
 
-	i = -1;
-	if (!(s) || !(f))
-		return (NULL);
-	while (s[++i])
-		f(i, &s[i]);
+	if (!(s) && !(f))
+	{
+		i = 0;
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i++;
+		}
+	}
 }
