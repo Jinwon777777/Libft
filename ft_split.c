@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:37:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 14:53:01 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 15:30:29 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,54 +48,37 @@ static int	ft_get_cnt(char const *s, char c)
 	return (cnt);
 }
 
-static char	*ft_word_print(char *word, char const *s, int l, int w_len)
+static int	ft_wordlength(char const *s, char c)
 {
-	int	i;
-
-	i = 0;
-	while (i < w_len)
-	{
-		word[i] = s[l - w_len + i];
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-static char	**ft_word_cpy(char **arr, char const *s, char c, int cnt)
-{
-	size_t	l;
-	size_t	i;
-	size_t	w_len;
+	int	l;
 
 	l = 0;
-	i = -1;
-	while (s[l] && ++i < cnt)
-	{
-		w_len = 0;
-		while (s[l] && s[l] == c)
-			l++;
-		while (s[l + w_len] && s[l + w_len] != c)
-			w_len++;
-		l += w_len;
-		arr[i] = (char *)malloc(sizeof(char) * (w_len + 1));
-		if (!arr[i])
-		{
-			ft_free_error(arr);
-			return (NULL);
-		}
-		ft_word_print(arr[i], s, l, w_len);
-	}
-	arr[i] = "\0";
-	return (arr);
+	while (*s != '\0' && *s != c)
+		l++;
+	return (l);
+}
+
+static char	*ft_word_cpy(char const *s, int wordl)
+{
+	char	*w;
+	char	*tmp;
+
+	w = (char *)malloc(sizeof(char) * (wordl + 1));
+	if (!(w))
+		return (NULL);
+	tmp = w;
+	while (wordl-- > 0)
+		*tmp++ = *s++;
+	*tmp = '\0';
+	return (w);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		cnt;
-	int		a;
-	int		x;
+	int		wordn;
+	int		wordl;
 
 	if (!(s))
 		return (NULL);
@@ -103,6 +86,19 @@ char	**ft_split(char const *s, char c)
 	arr = (char **)malloc(sizeof(char *) * (cnt + 1));
 	if (!(arr))
 		return (NULL);
-	ft_word_cpy(arr, s, c, cnt);
+	wordn = -1;
+	while (++wordn < cnt)
+	{
+		while (*s == c && *s != '\0')
+			s++;
+		wordl = ft_wordlength(s, c);
+		if (!(arr[wordn] = ft_word_cpy(s, wordl)))
+		{
+			ft_free_error(arr);
+			return (NULL);
+		}
+		s += wordl;
+	}
+	arr[cnt] = NULL;
 	return (arr);
 }
