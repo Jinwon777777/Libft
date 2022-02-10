@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:37:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 14:50:06 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 14:53:01 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static int	ft_get_cnt(char const *s, char c)
 		if (s[i] == c)
 		{
 			cnt++;
-			i = ft_pass(s, i, c);
+			while (s[i] && s[i] == c)
+				i++;
 		}
 		else
 			i++;
@@ -61,7 +62,7 @@ static char	*ft_word_print(char *word, char const *s, int l, int w_len)
 	return (word);
 }
 
-static char	*ft_word_cpy(char **arr, char const *s, char c, int cnt)
+static char	**ft_word_cpy(char **arr, char const *s, char c, int cnt)
 {
 	size_t	l;
 	size_t	i;
@@ -85,7 +86,7 @@ static char	*ft_word_cpy(char **arr, char const *s, char c, int cnt)
 		}
 		ft_word_print(arr[i], s, l, w_len);
 	}
-	arr[i] = '\0';
+	arr[i] = "\0";
 	return (arr);
 }
 
