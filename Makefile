@@ -6,7 +6,7 @@
 #    By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 12:04:51 by jiha              #+#    #+#              #
-#    Updated: 2022/02/10 08:56:57 by jiha             ###   ########.fr        #
+#    Updated: 2022/02/11 11:16:03 by jiha             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ OBJS_BNS = $(SRCS_BNS:.c=.o)
 
 all : $(NAME)
 %.o : %.c
-		$(CC) $(CFLAG) -c $< -o $@
+		$(CC) $(CFLAGS) -c $< -o $@
 clean :
 		$(RM) $(OBJS) $(OBJS_BNS)
 fclean : clean
