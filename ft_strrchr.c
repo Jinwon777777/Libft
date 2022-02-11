@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:16:50 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/11 10:45:45 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/11 10:57:14 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *s, int c)
 	int	i;
 	int	tmp;
 
-	i = ft_strlen(s) - 1;
+	i = ft_strlen(s);
 	tmp = -1;
 	while (i > 0)
 	{
