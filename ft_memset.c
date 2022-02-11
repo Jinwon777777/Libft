@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 09:28:21 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/08 20:42:35 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/10 23:47:46 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memset(void *ptr, int value, size_t num)
 	char	*tmp;
 
 	j = 0;
-	tmp = (char *) ptr;
+	tmp = (char *)ptr;
 	while (j < num)
 	{
 		tmp[j] = (unsigned char)value;

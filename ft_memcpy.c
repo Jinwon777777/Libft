@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 10:40:43 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 09:48:13 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/11 00:08:26 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t num)
 
 	if (!(dst) && !(src))
 		return (NULL);
-	tmp1 = (char *)dst;
-	tmp2 = (const char *)src;
+	tmp1 = dst;
+	tmp2 = src;
 	i = 0;
 	while (i < num)
 	{

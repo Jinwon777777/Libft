@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiha <jiha@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:16:50 by jiha              #+#    #+#             */
-/*   Updated: 2022/01/12 14:35:35 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/11 09:15:57 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ char	*ft_strrchr(const char *s, int c)
 			tmp = i;
 		i++;
 	}
-	if (s[i] == (char)c)
-		tmp = i;
 	if (tmp == -1)
 		return (NULL);
 	return ((char *)s + tmp);

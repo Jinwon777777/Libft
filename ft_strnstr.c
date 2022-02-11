@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 15:42:54 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/08 20:46:21 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/11 09:35:54 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	i = 0;
 	if (needle[0] == '\0')
-	{
 		return ((char *)haystack);
-	}
 	while (haystack[i] != '\0' && i < len)
 	{
 		j = 0;
