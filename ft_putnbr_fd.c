@@ -6,7 +6,7 @@
 /*   By: jiha <jiha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:18:16 by jiha              #+#    #+#             */
-/*   Updated: 2022/02/10 08:49:03 by jiha             ###   ########.fr       */
+/*   Updated: 2022/02/11 10:53:23 by jiha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putnbr_fd(int n, int fd)
 	long	val;
 	char	c;
 
+	if (fd < 0)
+		return ;
 	val = n;
 	if (val < 0)
 	{
